@@ -17,7 +17,7 @@ import java.util.ResourceBundle;
 /**
  * Abstract class for Modifier Commands.
  * Takes in 0, 1, or 2 input commands.
- * @author Alex Xu
+ * @author Alex Xu, Max Smith
  */
 public abstract class ModifierCommand implements Command, ModifierInterface {
     public static final String RESOURCE_BUNDLE_LOCATION = "src/properties/modifierCommands.properties";
