@@ -6,6 +6,10 @@ import slogo.logicalcontroller.command.Command;
 import java.lang.reflect.Constructor;
 import java.util.*;
 
+/**
+ * Purpose of this class is to aid the Parser in generating command objects in a static way
+ * @auther Max Smith
+ */
 public final class CommandGenerator {
 
     public static final String COLON = ":";

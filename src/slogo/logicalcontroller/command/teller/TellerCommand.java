@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Abstract class for TellerCommand
+ * Abstract class for TellerCommand, operations on multiple turtles
  * @author Math Smith
  */
 public abstract class TellerCommand implements Command {
@@ -24,6 +24,11 @@ public abstract class TellerCommand implements Command {
         }
     }
 
+    /**
+     * abstract call to execute, helps with code replace in parser
+     * @param model
+     * @return
+     */
     public abstract String execute(ModelCollection model);
 
     @Override

@@ -14,6 +14,10 @@ import slogo.view.windows.SlogoView;
 
 import java.util.List;
 
+/**
+ * The VisualInterface defines the public API on the VisualController
+ * @auther Max Smith
+ */
 public interface VisualInterface {
 
     /**
@@ -36,13 +40,34 @@ public interface VisualInterface {
      */
     void updateErrors(LogicalException e);
 
+    /**
+     * Update the turtle image according to a key value pair
+     * @param newValue
+     */
     void changeTurtleImage(String newValue);
 
+    /**
+     * fetch property on front end to determine how to display text
+     * @param type
+     * @return
+     */
     Property getProperty(VisualProperty type);
 
+    /**
+     * fetch view in manager to ensure referencing same objects
+     * @param view
+     */
     void setSlogoView(SlogoView view);
 
+    /**
+     * Update the command when the user sends in text input
+     * @param fullUserInput
+     */
     void updateCommand(String fullUserInput);
 
+    /**
+     * Deprecate the program when an insurmountable error occurs
+     * @param e
+     */
     void deprecateProgram(DeprecationException e);
 }
