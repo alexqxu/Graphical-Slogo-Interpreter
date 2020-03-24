@@ -5,8 +5,8 @@ import java.util.*;
 /**
  * The purpose of this class is to provide an encapsulation of the data structure used to hold multiple
  * ModelObjects, so that the Logical Controller does not need to depend on any specific implementation
- * of data structure. Implements the Iterable interface.
- * @author Alex Xu
+ * of data structure.
+ * @author Alex Xu, Max Smith
  */
 public class ModelCollection {
 

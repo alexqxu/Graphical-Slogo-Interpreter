@@ -30,6 +30,12 @@ public final class MasterCodeFilterUtility {
         throw new AssertionError(INVALID_INSTANTIATION_ERROR);
     }
 
+    /**
+     * Static class that returns the filtered result of the input, based on activated filters.
+     * @param rawInput
+     * @param language
+     * @return
+     */
     public static String filter(String rawInput, String language){
         String result;
         ResourceBundle filtersApplied;
