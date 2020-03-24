@@ -18,6 +18,11 @@ import slogo.view.windows.SlogoView;
 
 import java.util.*;
 
+/**
+ * The VisualController is used to mediate information exchange between the LogicalController and the View.
+ * It uses two media of communication, method calls for larger objects and bindings for text.
+ * @auther Max Smith
+ */
 public class VisualController implements VisualInterface {
 
   private double myAnimationRate;

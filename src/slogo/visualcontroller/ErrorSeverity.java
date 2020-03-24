@@ -2,6 +2,10 @@ package slogo.visualcontroller;
 
 import javafx.scene.paint.Color;
 
+/**
+ * An enumerated type to help determine properties of an error
+ * @auther Max Smith
+ */
 public enum ErrorSeverity {
     BASIC ("Basic", Color.BLUE),
     MEDIUM ("Medium", Color.YELLOW),

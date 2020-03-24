@@ -4,6 +4,10 @@ import javafx.scene.paint.Color;
 import slogo.model.ModelTurtle;
 import slogo.view.TurtleImage;
 
+/**
+ * A visual turtle object which is constructed from a ModelTurtle object, displayed in the view
+ * @auther Max Smith, Grant LoPresti
+ */
 public class VisualTurtle extends VisualObject {
 
   public static final boolean DEFAULT_CHANGE_STATE = false;

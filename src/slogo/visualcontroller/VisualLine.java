@@ -2,6 +2,10 @@ package slogo.visualcontroller;
 
 import javafx.scene.paint.Color;
 
+/**
+ * A visual line which is immediately populated inside of the view
+ * @auther Max Smith
+ */
 public class VisualLine {
   private static final Color DEFAULT_COLOR = Color.BLACK;
   private static final double DEFAULT_THICKNESS = 5;

@@ -4,6 +4,10 @@ import javafx.scene.paint.Color;
 import slogo.exceptions.DeprecationException;
 import slogo.exceptions.LogicalException;
 
+/**
+ * A visual error which is displayed to the user in a tab and as a popup
+ * @auther Max Smith
+ */
 public class VisualError {
 
     private final String myMessage;

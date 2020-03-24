@@ -1,5 +1,9 @@
 package slogo.visualcontroller;
 
+/**
+ * A visual text object which only stores text, populates the side panes appropriateley
+ * @auther Max Smith
+ */
 public abstract class VisualText {
 
     private final String myString;
