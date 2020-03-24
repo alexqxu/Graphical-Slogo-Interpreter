@@ -10,6 +10,10 @@ import slogo.logicalcontroller.ControlFlowExtractor;
 import java.io.IOException;
 import java.util.*;
 
+/**
+ * Purpose of this class is to help process user input and turn it into executable commands for the parser
+ * @auther Max Smith, Alex Xu, Amjad S
+ */
 public class UserInput implements UserInputInterface, BundleInterface {
 
     private List<String> myUserInput;
