@@ -39,47 +39,29 @@ public class Parser implements BundleInterface, ParserInterface {
 
     /**
      * Constructor for the Parser class that takes in the input language and initializes all the used variables that are required for parsing.
-     * @param language
+     * @param Takes in the language, model, and the variables
      */
     public Parser(String language, ModelCollection model, VariableList variables) throws IOException {
         setLanguage(language);
         this.myModelCollection = model;
         this.myVariableList = variables;
     }
-
-    /**
-     * Reads in the language of the appropriate resource file and loads it into a resource bundle for future use.
-     * @param language
-     */
+    
     @Override
     public void setLanguage(String language) throws IOException {
         this.myLanguage = language;
         this.myLanguageResources = BundleInterface.createResourceBundle(nameLanguageFile());
     }
 
-    /**
-     * Method to find out name of the resource file, based on whatever language the user selected
-     * @return String representing the file path of the resource file
-     */
-
     private String nameLanguageFile() {
         return "resources/languages/" + this.myLanguage + ".properties";
     }
 
-    /**
-     * Called by SlogoView with lines to parse into executable commmands
-     * Two stage process, first
-     * @param lines
-     */
     @Override
     public void parse(List<String> lines) throws ResourceBundleException {
         this.myUserInput = new UserInput(lines, this.myLanguageResources);
     }
 
-    /**
-     * @param command use reflection on command superclass to route command to appropriate helper method
-     * @return list of strings to replace that command in the UserInput
-     */
     private List<String> executeCommand(Command command) {
         try {
             Class superclazz = command.getClass().getSuperclass();
@@ -92,9 +74,6 @@ public class Parser implements BundleInterface, ParserInterface {
         }
     }
 
-    /**
-     * Method to find and execute the next command in the arraylist of raw commands. Represents one step of the turtle.
-     */
     @Override
     public void executeNextCommand(){
         this.myLatestCommand = this.myUserInput.getNextCommand();

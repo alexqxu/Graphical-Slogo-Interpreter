@@ -60,7 +60,7 @@ public class Home extends Application {
       try {
         launchSim();
       } catch (IOException ex) {
-        ;
+        System.out.println("INVALID SIMULATION LAUNCH ERROR");
       }
     });
     //TODO: Add actual events to these button clicks
