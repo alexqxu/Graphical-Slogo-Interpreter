@@ -39,7 +39,7 @@ public class Parser implements BundleInterface, ParserInterface {
 
     /**
      * Constructor for the Parser class that takes in the input language and initializes all the used variables that are required for parsing.
-     * @param language
+     * @param Takes in the language, model, and the variables
      */
     public Parser(String language, ModelCollection model, VariableList variables) throws IOException {
         setLanguage(language);
@@ -49,7 +49,8 @@ public class Parser implements BundleInterface, ParserInterface {
 
     /**
      * Reads in the language of the appropriate resource file and loads it into a resource bundle for future use.
-     * @param language
+     *  Assumes that the language fed in is one from the list already determined
+     * @param Takes in the language selected as a string
      */
     @Override
     public void setLanguage(String language) throws IOException {
@@ -57,29 +58,20 @@ public class Parser implements BundleInterface, ParserInterface {
         this.myLanguageResources = BundleInterface.createResourceBundle(nameLanguageFile());
     }
 
-    /**
-     * Method to find out name of the resource file, based on whatever language the user selected
-     * @return String representing the file path of the resource file
-     */
-
     private String nameLanguageFile() {
         return "resources/languages/" + this.myLanguage + ".properties";
     }
 
     /**
      * Called by SlogoView with lines to parse into executable commmands
-     * Two stage process, first
-     * @param lines
+     * Two stage process, first sets up the UserInput object so that it can interpret and parse based on the language selected
+     * @param Takes in parameter of list of raw commands inputted, as strings
      */
     @Override
     public void parse(List<String> lines) throws ResourceBundleException {
         this.myUserInput = new UserInput(lines, this.myLanguageResources);
     }
 
-    /**
-     * @param command use reflection on command superclass to route command to appropriate helper method
-     * @return list of strings to replace that command in the UserInput
-     */
     private List<String> executeCommand(Command command) {
         try {
             Class superclazz = command.getClass().getSuperclass();
@@ -94,6 +86,8 @@ public class Parser implements BundleInterface, ParserInterface {
 
     /**
      * Method to find and execute the next command in the arraylist of raw commands. Represents one step of the turtle.
+     * Method assumes that there are more command in the list to be executed
+     * No parameters as this is a getter method
      */
     @Override
     public void executeNextCommand(){
@@ -140,11 +134,23 @@ public class Parser implements BundleInterface, ParserInterface {
         return new ArrayList<String>(List.of(command.execute(this.myVariableList)));
     }
 
+    /**
+     * This method returns the latest command that was executed
+     * If there was no previous command, it will return null
+     * No parameters as this is a getter method
+     * @return Returns a Command object representing the latest command executed
+     */
     @Override
     public Command getLatestCommand() {
         return this.myLatestCommand;
     }
 
+    /**
+     * This method is to return the list of variables that may be defined by the user in the program
+     * This method can fail potentially if the data structure goes null
+     * No parameters as this is a getter method
+     * @return Returns a VariableList object with all the variables in it
+     */
     @Override
     public VariableList getVariables() {return this.myVariableList; }
 

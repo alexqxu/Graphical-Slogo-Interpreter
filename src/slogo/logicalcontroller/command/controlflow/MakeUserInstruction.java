@@ -19,10 +19,18 @@ public class MakeUserInstruction extends ControlFlowCommand {
         unravelCode();
     }
 
+    /**
+     * Getter method to get the name of the command, which is a private variable stored in the class
+     * @return The string with the name of the command
+     */
     public String getName(){
         return this.funcName;
     }
 
+    /**
+     * Method to get the unraveled version of a command that has a body
+     * @return A list of strings with the new parsed commands
+     */
     @Override
     public List<String> getUnraveledCode(){
         return getBody();

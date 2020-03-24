@@ -13,6 +13,13 @@ public final class ControlFlowExtractor {
         throw new AssertionError(INVALID_INSTANTIATION_ERROR);
     }
 
+    /**
+     * Method to return the contents within a single line set of brackets
+     * Assumes that the line to be analyzed has a controlflow command with a set of opening and closing brackets
+     * @param rawCommands List of raw commands from the user
+     * @param line Line number of the controlflow command object
+     * @return Returns a list of the arguments within the brackets
+     */
     public static List<String> getBracketArguments(List<String> rawCommands, int line) {
         String myLine = rawCommands.get(line);
         int start = myLine.indexOf("[") + 1;
@@ -23,6 +30,14 @@ public final class ControlFlowExtractor {
         return ret;
     }
 
+    /**
+     * Method that given the raw commands list and the index of the controlflow object, returns the updated internal contents of the command
+     * Assumes that all parameters are up to date for the iteration the program is on
+     * @param rawCommands List of raw commands taken from the user
+     * @param lineIndex Line Index of thr control flow object
+     * @param bracIndex Index of thr opening bracket of the control flow object
+     * @return Returns the updated body with the internal contents of the command
+     */
     public static List<String> initControlFlow(List<String> rawCommands, int lineIndex, int bracIndex){
 
         int[] retIndexes = retEndIndex(rawCommands, lineIndex, bracIndex);
@@ -39,6 +54,14 @@ public final class ControlFlowExtractor {
 
     }
 
+    /**
+     * Method to return the line number of the last bracket of the controlflow command, so that the contents can be extracted
+     * Method assumes that the starting line of the command is accurate and the index of the opening bracket is included
+     * @param rawCommands List of string representing the raw commands typed by the user
+     * @param lineIndex Line number of the controlflow command of interest
+     * @param bracIndex Bracket position of the opening bracket
+     * @return
+     */
     public static int getLineLastBrac(List<String> rawCommands, int lineIndex, int bracIndex){
         int[] retIndexes = retEndIndex(rawCommands, lineIndex, bracIndex);
         return retIndexes[0];

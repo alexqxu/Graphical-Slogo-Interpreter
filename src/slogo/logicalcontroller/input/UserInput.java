@@ -28,6 +28,11 @@ public class UserInput implements UserInputInterface, BundleInterface {
     private static ResourceBundle myCommandMap;
     private static ResourceBundle myParameterMap;
 
+    /**
+     * Constructor for the UserInput class, which is to deal with the text that the user enters so that it may be parsed.
+     * @param userInput
+     * @param bundle
+     */
     public UserInput(List<String> userInput, ResourceBundle bundle) {
         this.myUserInput = userInput;
         this.myResources = bundle;
@@ -39,6 +44,12 @@ public class UserInput implements UserInputInterface, BundleInterface {
         }
     }
 
+    /**
+     * Method to go through the command list and find the next command to execute
+     * Assumes that the command list is not done yet
+     * No parameters, as this is a getter method
+     * @return Method returns the Command object of the next command in the list
+     */
     @Override
     public Command getNextCommand() {
         try {
@@ -111,6 +122,12 @@ public class UserInput implements UserInputInterface, BundleInterface {
         return result;
     }
 
+    /**
+     * This method is to let the program know whether or not it has reached the end of the list of commands
+     * This method assumes that you are still in the list of commands
+     * There are no parameters for this method, as it has access to the list variable needed
+     * @return true or false depending on whether the program is at the end or not
+     */
     @Override
     public boolean isFinished() {
         try {
@@ -122,7 +139,11 @@ public class UserInput implements UserInputInterface, BundleInterface {
         }
     }
 
-    // TODO - how to handle multi line replacements vs. single line?
+    /**
+     * This method is called when a command is a controlflow command that needs to replace itself with an expanded set of commands
+     * This code assumes that the Command object fed in is falls under the category of those that need code replacement
+     * @param Takes in the list of raw commands as strings and the command object in question to be evaluated
+     */
     @Override
     public void setCodeReplacement(List<String> code, Command command) {
         if (command.getClass().getSuperclass().getSimpleName().equals("ControlFlowCommand")) {
