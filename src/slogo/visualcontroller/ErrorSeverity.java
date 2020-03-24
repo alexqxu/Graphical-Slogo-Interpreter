@@ -18,6 +18,10 @@ public enum ErrorSeverity {
         myColor = color;
     }
 
+    /**
+     * called by view to get properties of error element
+     * @return
+     */
     public Color getColor() {return myColor;}
     public String getLevel() {return mySevereLevel;}
 }
