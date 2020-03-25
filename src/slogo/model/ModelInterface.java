@@ -2,11 +2,12 @@ package slogo.model;
 
 /**
  * Interface that dictates public methods that all ModelObjects are expected to support. This is the API for the model.
- * Assumptions Include: Pen is always at the same location of the ModelObject
+ * Assumptions Include: Pen is always at the same location of the ModelObject. I think that this code is well-designed
+ * because it fully utilizes the inheritance to provide for the most flexibility in implementing objects included in the Model.
+ * This is the public API that other components of the program can communicate through.
  * @author Alex Xu
  */
 public interface ModelInterface {
-
     /**
      * Returns the X location of the ModelObject, depending on implementation
      * @return double representing X coordinate
@@ -65,6 +66,4 @@ public interface ModelInterface {
      * @param degree to turn the ModelObject by
      */
     public void turn(double degree);
-
-    public double forward(double value);
 }

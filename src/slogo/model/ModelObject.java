@@ -1,8 +1,9 @@
 package slogo.model;
-
 /**
- * Abstract class that dictates encapsulation and logic for all ModelObjects.
- * @author Alex Xu
+ * Abstract class that dictates encapsulation and logic for all ModelObjects. This is good code design as it
+ * uses inheritance to create an abstract ModelObject class, which would allow for polymorphism for different types of
+ * ModelObjects, not just turtles. This allows for greater flexibility.
+ * @author Alex Xu and Max S.
  */
 public abstract class ModelObject implements ModelInterface{
 
@@ -70,17 +71,6 @@ public abstract class ModelObject implements ModelInterface{
     public void move(double distance) {
         xCoordinate += calcX(distance);
         yCoordinate += calcY(distance);
-        // System.out.printf("new pos: (%.1f, %.1f)\n", xCoordinate, yCoordinate);
-    }
-
-    public double setPosition(double x, double y){
-        double prevX = xCoordinate;
-        double prevY = yCoordinate;
-
-        xCoordinate = x;
-        yCoordinate = y;
-
-        return calcDistance(prevX -x, prevY -y);
     }
 
     /**
@@ -91,7 +81,6 @@ public abstract class ModelObject implements ModelInterface{
     public double setHeading(double degree) {
         double prevHeading = heading;
         heading = degree;
-
         return heading-prevHeading;
     }
 
@@ -102,7 +91,6 @@ public abstract class ModelObject implements ModelInterface{
     @Override
     public void turn(double degree) {
         heading += degree;
-
         while(heading >= CIRCLE){
             heading = heading - CIRCLE;
         }
@@ -110,40 +98,6 @@ public abstract class ModelObject implements ModelInterface{
             heading = heading + CIRCLE;
         }
     }
-
-    public double left(double degree){
-        turn(degree);
-        return degree;
-    }
-
-    public double right(double degree){
-        turn(-1*degree);
-        return degree;
-    }
-
-    public double setTowards(double x, double y){
-        double prevHeading = heading;
-
-        double relativeX = x - xCoordinate;
-        double relativeY = y - yCoordinate;
-
-        double theta = Math.atan(relativeY / relativeX);
-        double degrees = Math.toDegrees(theta);
-
-        double angle;
-
-        if(relativeY >= ORIGIN){
-            angle = degrees;
-        }
-        else{
-            angle = degrees + CIRCLE/2;
-        }
-
-        setHeading(angle);
-
-        return Math.abs(heading - prevHeading);
-    }
-
     /**
      * Returns the ID Number of the ModelObject.
      */
@@ -152,12 +106,78 @@ public abstract class ModelObject implements ModelInterface{
         return ID;
     }
 
-    @Override
+
+    /**
+     * Sets the position of the Model object to the given coordinates.
+     * @param x x coordinate
+     * @param y y coordinate
+     * @return distance traveled.
+     */
+    public double setPosition(double x, double y){
+        double prevX = xCoordinate;
+        double prevY = yCoordinate;
+        xCoordinate = x;
+        yCoordinate = y;
+        return calcDistance(prevX -x, prevY -y);
+    }
+    /**
+     * Turns the model object left
+     * @param degree to turn the model object left by
+     * @return degree turned
+     */
+    public double left(double degree){
+        turn(degree);
+        return degree;
+    }
+
+    /**
+     * Turns the model object right
+     * @param degree to turn the model object right by
+     * @return degree turned
+     */
+    public double right(double degree){
+        turn(-1*degree);
+        return degree;
+    }
+
+    /**
+     * Sets the ModelObject to point toward a particular point.
+     * @param x x coordiante
+     * @param y y coordinate
+     * @return degrees turned
+     */
+    public double setTowards(double x, double y){
+        double prevHeading = heading;
+        double relativeX = x - xCoordinate;
+        double relativeY = y - yCoordinate;
+        double theta = Math.atan(relativeY / relativeX);
+        double degrees = Math.toDegrees(theta);
+        double angle;
+        if(relativeY >= ORIGIN){
+            angle = degrees;
+        }
+        else{
+            angle = degrees + CIRCLE/2;
+        }
+        setHeading(angle);
+        return Math.abs(heading - prevHeading);
+    }
+
+    /**
+     * Moves the model object forward by a certain value
+     * @param value to move the model object forward by
+     * @return the value the model object moved forward
+     */
     public double forward(double value){
         move(value);
         return value;
     }
 
+    /**
+     * Moves the model object backward by a certain value
+     * @param value to move the model object backward by
+     * @return the value the model object moved backward
+     */
     public double backward(double value){
         move(-1*value);
         return value;
@@ -178,5 +198,4 @@ public abstract class ModelObject implements ModelInterface{
     private double calcDistance(double x, double y){
         return Math.sqrt(x*x + y*y);
     }
-
 }
