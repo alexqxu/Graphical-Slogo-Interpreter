@@ -28,20 +28,18 @@ public class LogicalController {
   private VariableList myVariables;
   private String myLanguage;
 
+  /**
+   * Constructor for the Logical Controller
+   * @param modelCollection
+   * @param visualController
+   * @param variables
+   */
   public LogicalController(ModelCollection modelCollection, VisualController visualController, VariableList variables){
     this.myModelCollection = modelCollection;
     this.myVisualController = visualController;
     this.myVariables = variables;
     this.myLanguage = DEFAULT_LANGUAGE;
     createParser();
-  }
-
-  private void createParser() {
-    try {
-      myParser= new Parser(DEFAULT_LANGUAGE, this.myModelCollection, this.myVariables);
-    } catch (Exception e) {
-      System.exit(0);
-    }
   }
 
   /**
@@ -73,6 +71,14 @@ public class LogicalController {
       this.myVisualController.updateErrors(e);
     } catch (DeprecationException e) {
       this.myVisualController.deprecateProgram(e);
+    }
+  }
+
+  private void createParser() {
+    try {
+      myParser= new Parser(DEFAULT_LANGUAGE, this.myModelCollection, this.myVariables);
+    } catch (Exception e) {
+      System.exit(0);
     }
   }
 
