@@ -23,8 +23,12 @@ import java.io.*;
 import java.lang.reflect.*;
 
 /**
- * Purpose of this class is to parse incoming commands from the console and from a text file that the user will have an option to read in.
- * @authors Max S, Alex X, Amjad S
+ * Code Masterpiece for Amjad
+ *
+ * This code is well designed because it has a detailed amount of method for all other main tasks that the parser needs to do.
+ * Methods are kept short and efficient, and proper naming conventions are used.
+ * Exception handling taken into account, with custom exceptions utilized
+ * No edits I feel were necessary and none that I can see.
  */
 public class Parser implements BundleInterface, ParserInterface {
 

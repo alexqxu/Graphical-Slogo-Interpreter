@@ -22,11 +22,7 @@ public final class ControlFlowExtractor {
      */
     public static List<String> getBracketArguments(List<String> rawCommands, int line) {
         String myLine = rawCommands.get(line);
-        int start = myLine.indexOf("[") + 1;
-        int end = myLine.indexOf("]");
-        List<String> ret = Arrays.asList(myLine.substring(start, end).trim().split("\\s"));
-        // for (String s: ret) {System.out.println(s);}
-        // System.out.printf("on line %s, found brackets @start %d and @end %d \n", myLine, start, end);
+        List<String> ret = Arrays.asList(myLine.substring(myLine.indexOf("[") + 1, myLine.indexOf("]")).trim().split("\\s"));
         return ret;
     }
 
@@ -39,7 +35,6 @@ public final class ControlFlowExtractor {
      * @return Returns the updated body with the internal contents of the command
      */
     public static List<String> initControlFlow(List<String> rawCommands, int lineIndex, int bracIndex){
-
         int[] retIndexes = retEndIndex(rawCommands, lineIndex, bracIndex);
         int endLineIndex = retIndexes[0];
         int endBracIndex = retIndexes[1];
