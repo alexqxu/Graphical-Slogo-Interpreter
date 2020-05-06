@@ -3,7 +3,7 @@ parser
 
 This project implements a development environment that helps users write SLogo programs.
 
-Names: Alex Xu, Amjad Syedibrahim, Max Smith, Grant LoPresti
+Creators: Alex Xu, Amjad Syedibrahim, Max Smith, Grant LoPresti
 
 ### Timeline
 
