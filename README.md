@@ -1,4 +1,4 @@
-parser
+Graphical Slogo Interpreter
 ====
 
 This project implements a development environment that helps users write SLogo programs.
